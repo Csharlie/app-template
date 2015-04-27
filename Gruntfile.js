@@ -9,15 +9,48 @@ module.exports = function(grunt) {
     // Get package meta data
     pkg: grunt.file.readJSON('package.json'),
 
+    // Run tasks whenever watched files change
+    watch: {
+      compass: {
+        files: ['*.{scss,sass}', '**/*.{scss,sass}'],
+        tasks: ['compass:dev']
+      },
+      js: {
+        files: ['**/*.js'],
+        tasks: ['uglify']
+      }
+    },
+
+    compass: {
+      dev: {
+        options: {
+          config: 'config.rb',
+          environment: 'development'
+        }
+      },
+      prod: {
+        options: {
+          config: 'config.rb',
+          environment: 'production'
+        }
+      },
+    },
+
     // Minify files with UglifyJS
     uglify: {
       options: {
-        banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+        // the banner is inserted at the top of the output
+        banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
       },
       build: {
-        src: 'src/<%= pkg.name %>.js',
-        dest: 'build/<%= pkg.name %>.min.js'
-      }
+        files: {
+          'assets/js/min/script.min.js': ['assets/js/script.js'],
+        }
+    }
+      // js: {
+      //   src: ['assets/js/script.js'],
+      //   dest: 'assets/js/min/script.min.js'
+      // }
     }
   });
 
