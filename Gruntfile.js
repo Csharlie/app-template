@@ -46,20 +46,29 @@ module.exports = function(grunt) {
         files: {
           'assets/js/min/script.min.js': ['assets/js/script.js'],
         }
-    }
-      // js: {
-      //   src: ['assets/js/script.js'],
-      //   dest: 'assets/js/min/script.min.js'
-      // }
+      }
+    },
+
+    // A grunt task for the browser-sync module
+    browserSync: {
+      bsFiles: {
+        src : 'assets/css/*.css'
+      },
+      options: {
+        server: {
+          baseDir: "./"
+        }
+      }
     }
   });
 
   // Load the plugin that provides the "uglify" task.
+  grunt.loadNpmTasks('grunt-browser-sync');
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   // Default task(s)
-  grunt.registerTask('default', ['uglify']);
+  grunt.registerTask('default', ['browserSync', 'watch']);
 
 };

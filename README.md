@@ -1,6 +1,26 @@
 # app-template
 > My App Template with Grunt.js
 
+##Activate this tmeplate:
+
+```shell
+npm install -g grunt-cli@latest
+```
+
+```shell
+npm install
+```
+
+```shell
+grunt browserSync
+```
+
+```shell
+grunt watch
+```
+
+##Create this template:
+
 ###grunt-template repo cloned
 
 ```shell
@@ -60,3 +80,17 @@ grunt.loadNpmTasks('grunt-contrib-compass');
 this post has helped settings:
 
 [Matthew Jackson: Grunt workflow for compiling Sass & Compass and minifying Javascript](http://matthew-jackson.com/notes/development/grunt-workflow-for-sass-compass-and-js/)
+
+###install grunt-browser-sync
+
+Repo: [https://github.com/BrowserSync/grunt-browser-sync](https://github.com/BrowserSync/grunt-browser-sync)
+
+```shell
+npm install grunt-browser-sync --save-dev
+```
+
+Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
+
+```shell
+grunt.loadNpmTasks('grunt-browser-sync');
+```
